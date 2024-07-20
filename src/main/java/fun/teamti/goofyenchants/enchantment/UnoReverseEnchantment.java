@@ -2,10 +2,9 @@ package fun.teamti.goofyenchants.enchantment;
 
 import fun.teamti.goofyenchants.init.ModEnchantments;
 import fun.teamti.goofyenchants.init.ModItems;
-import fun.teamti.goofyenchants.init.ModNetwork;
-import fun.teamti.goofyenchants.network.UnoReverseAnimationPacket;
+import fun.teamti.goofyenchants.init.ModServer;
+import fun.teamti.goofyenchants.server.UnoReverseAnimationPacket;
 import net.minecraft.network.protocol.game.ClientboundEntityEventPacket;
-import net.minecraft.network.protocol.game.ClientboundGameEventPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSources;
 import net.minecraft.world.entity.Entity;
@@ -95,7 +94,7 @@ public class UnoReverseEnchantment extends Enchantment {
             serverAttacker.connection.send(new ClientboundEntityEventPacket(serverAttacker, (byte) 35));
 
             // Send a custom packet to set the totem item client-side
-            ModNetwork.sendToPlayer(new UnoReverseAnimationPacket(unoReverseStack), serverAttacker);
+            ModServer.sendToPlayer(new UnoReverseAnimationPacket(unoReverseStack), serverAttacker);
         }
     }
 }
