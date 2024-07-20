@@ -1,5 +1,6 @@
 package fun.teamti.goofyenchants.enchantment;
 
+import fun.teamti.goofyenchants.GoofyEnchants;
 import fun.teamti.goofyenchants.init.ModEnchantments;
 import fun.teamti.goofyenchants.init.ModItems;
 import fun.teamti.goofyenchants.init.ModServer;
@@ -23,13 +24,11 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = "goofyenchants")
 public class UnoReverseEnchantment extends Enchantment {
 
     private static final List<Runnable> SCHEDULED_TASKS = new ArrayList<>();
-    private static final Random RANDOM = new Random();
 
     public UnoReverseEnchantment(Rarity pRarity, EquipmentSlot... pApplicableSlots) {
         super(pRarity, createCategory(), pApplicableSlots);
@@ -62,7 +61,7 @@ public class UnoReverseEnchantment extends Enchantment {
             int level = activeItem.getEnchantmentLevel(ModEnchantments.UNO_REVERSE.get());
             if (level > 0) {
                 double chance = level * 0.1;
-                if (RANDOM.nextDouble() < chance) {
+                if (GoofyEnchants.rand.nextDouble() < chance) {
                     event.setCanceled(true);
                     SCHEDULED_TASKS.add(() -> reflectDamageAndKnockback(player, (LivingEntity) attacker, event.getAmount()));
                 }
