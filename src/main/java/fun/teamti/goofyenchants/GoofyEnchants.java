@@ -11,11 +11,14 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
+import java.util.Random;
+
 @Mod(GoofyEnchants.MOD_ID)
 public class GoofyEnchants
 {
     public static final String MOD_ID = "goofyenchants";
     private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Random rand = new Random();
 
 
     public GoofyEnchants()

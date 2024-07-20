@@ -23,12 +23,13 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = "goofyenchants")
 public class UnoReverseEnchantment extends Enchantment {
 
     private static final List<Runnable> SCHEDULED_TASKS = new ArrayList<>();
+    private static final Random RANDOM = new Random();
 
     public UnoReverseEnchantment(Rarity pRarity, EquipmentSlot... pApplicableSlots) {
         super(pRarity, createCategory(), pApplicableSlots);
@@ -40,7 +41,7 @@ public class UnoReverseEnchantment extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 1;
+        return 3;
     }
 
     @SubscribeEvent
@@ -60,10 +61,11 @@ public class UnoReverseEnchantment extends Enchantment {
         if (activeItem.getItem() instanceof ShieldItem && player.isBlocking()) {
             int level = activeItem.getEnchantmentLevel(ModEnchantments.UNO_REVERSE.get());
             if (level > 0) {
-                event.setCanceled(true);
-
-                // Schedule the damage reflection and knockback for the next tick
-                SCHEDULED_TASKS.add(() -> reflectDamageAndKnockback(player, (LivingEntity) attacker, event.getAmount()));
+                double chance = level * 0.1;
+                if (RANDOM.nextDouble() < chance) {
+                    event.setCanceled(true);
+                    SCHEDULED_TASKS.add(() -> reflectDamageAndKnockback(player, (LivingEntity) attacker, event.getAmount()));
+                }
             }
         }
     }
@@ -98,3 +100,5 @@ public class UnoReverseEnchantment extends Enchantment {
         }
     }
 }
+
+
