@@ -1,7 +1,11 @@
 package fun.teamti.goofyenchants.enchantment;
 
 import fun.teamti.goofyenchants.init.ModEnchantments;
+import fun.teamti.goofyenchants.init.ModItems;
+import fun.teamti.goofyenchants.init.ModNetwork;
+import fun.teamti.goofyenchants.network.UnoReverseAnimationPacket;
 import net.minecraft.network.protocol.game.ClientboundEntityEventPacket;
+import net.minecraft.network.protocol.game.ClientboundGameEventPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSources;
 import net.minecraft.world.entity.Entity;
@@ -77,18 +81,18 @@ public class UnoReverseEnchantment extends Enchantment {
     }
 
     private static void reflectDamageAndKnockback(Player player, LivingEntity attacker, float damage) {
-        // Apply damage to the attacker
         DamageSources damageSources = player.level().damageSources();
         attacker.hurt(damageSources.playerAttack(player), damage);
 
-        // Apply knockback
-        double knockbackStrength = 0.5;  // Adjust this value to change knockback strength
+        double knockbackStrength = 0.5;
         Vec3 knockbackVector = attacker.position().subtract(player.position()).normalize().scale(knockbackStrength);
-        attacker.push(knockbackVector.x, 0.1, knockbackVector.z);  // Add a small vertical component for a slight "pop-up" effect
+        attacker.push(knockbackVector.x, 0.1, knockbackVector.z);
 
-        // Play custom totem animation on the attacker
         if (attacker instanceof ServerPlayer serverAttacker) {
-            serverAttacker.connection.send(new ClientboundEntityEventPacket(serverAttacker, (byte) 35));
+            ItemStack unoReverseStack = new ItemStack(ModItems.UNO_REVERSE.get());
+            if (!serverAttacker.getInventory().add(unoReverseStack)) {
+                serverAttacker.drop(unoReverseStack, false);
+            }
         }
     }
 }

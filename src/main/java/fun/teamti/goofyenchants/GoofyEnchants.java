@@ -2,6 +2,8 @@ package fun.teamti.goofyenchants;
 
 import com.mojang.logging.LogUtils;
 import fun.teamti.goofyenchants.init.ModEnchantments;
+import fun.teamti.goofyenchants.init.ModItems;
+import fun.teamti.goofyenchants.init.ModNetwork;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -25,26 +27,14 @@ public class GoofyEnchants
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
+        ModItems.ITEMS.register(modEventBus);
         ModEnchantments.ENCHANTMENTS.register(modEventBus);
+        ModNetwork.register();
 
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-    }
-
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event)
-    {
-    }
-
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents
-    {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
-        {
-        }
     }
 }
