@@ -90,9 +90,12 @@ public class UnoReverseEnchantment extends Enchantment {
 
         if (attacker instanceof ServerPlayer serverAttacker) {
             ItemStack unoReverseStack = new ItemStack(ModItems.UNO_REVERSE.get());
-            if (!serverAttacker.getInventory().add(unoReverseStack)) {
-                serverAttacker.drop(unoReverseStack, false);
-            }
+
+            // Send packet to play totem animation with our custom item
+            serverAttacker.connection.send(new ClientboundEntityEventPacket(serverAttacker, (byte) 35));
+
+            // Send a custom packet to set the totem item client-side
+            ModNetwork.sendToPlayer(new UnoReverseAnimationPacket(unoReverseStack), serverAttacker);
         }
     }
 }
