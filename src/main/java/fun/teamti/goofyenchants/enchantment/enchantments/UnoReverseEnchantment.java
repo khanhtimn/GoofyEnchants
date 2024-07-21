@@ -2,7 +2,10 @@ package fun.teamti.goofyenchants.enchantment.enchantments;
 
 import fun.teamti.goofyenchants.util.ModEnchantmentCategory;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.item.enchantment.Enchantment;
+import org.jetbrains.annotations.NotNull;
 
 public class UnoReverseEnchantment extends Enchantment {
 
@@ -28,6 +31,16 @@ public class UnoReverseEnchantment extends Enchantment {
     @Override
     public boolean isTreasureOnly() {
         return true;
+    }
+
+    @Override
+    public boolean canEnchant(ItemStack pStack) {
+        return pStack.getItem() instanceof ShieldItem;
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(@NotNull ItemStack stack) {
+        return stack.getItem() instanceof ShieldItem;
     }
 }
 

@@ -3,25 +3,23 @@ package fun.teamti.goofyenchants.enchantment.enchantments;
 import fun.teamti.goofyenchants.init.ModEnchantments;
 import fun.teamti.goofyenchants.util.IScale;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import org.jetbrains.annotations.NotNull;
 
-public class SmallEnchantment extends Enchantment implements IScale {
-
-    public SmallEnchantment(Rarity pRarity, EquipmentSlot... pApplicableSlots) {
+public class BigEnchantment extends Enchantment implements IScale {
+    public BigEnchantment(Rarity pRarity, EquipmentSlot... pApplicableSlots) {
         super(pRarity, EnchantmentCategory.ARMOR_HEAD, pApplicableSlots);
     }
 
     @Override
     public float getScaleValue(int level) {
         return switch (level) {
-            case 1 -> 0.5F;
-            case 2 -> 0.3F;
-            case 3 -> 0.1F;
+            case 1 -> 1.5F;
+            case 2 -> 2.0F;
+            case 3 -> 2.5F;
             default -> 1.0F;
         };
     }
@@ -29,9 +27,9 @@ public class SmallEnchantment extends Enchantment implements IScale {
     @Override
     public float getReachScaleValue(int level) {
         return switch (level) {
-            case 1 -> 0.7F;
-            case 2 -> 0.5F;
-            case 3 -> 0.2F;
+            case 1 -> 1.2F;
+            case 2 -> 1.5F;
+            case 3 -> 2.0F;
             default -> 1.0F;
         };
     }
@@ -59,17 +57,17 @@ public class SmallEnchantment extends Enchantment implements IScale {
     @Override
     public boolean canEnchant(ItemStack pStack) {
         return pStack.getItem() instanceof ArmorItem &&
-                LivingEntity.getEquipmentSlotForItem(pStack) == EquipmentSlot.HEAD;
+                pStack.getEquipmentSlot() == EquipmentSlot.HEAD;
     }
 
     @Override
     public boolean canApplyAtEnchantingTable(@NotNull ItemStack stack) {
         return stack.getItem() instanceof ArmorItem &&
-                LivingEntity.getEquipmentSlotForItem(stack) == EquipmentSlot.HEAD;
+                stack.getEquipmentSlot() == EquipmentSlot.HEAD;
     }
 
     @Override
     protected boolean checkCompatibility(@NotNull Enchantment pOther) {
-        return !pOther.equals(ModEnchantments.BIG.get());
+        return !pOther.equals(ModEnchantments.SMALL.get());
     }
 }
