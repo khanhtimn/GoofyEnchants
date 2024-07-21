@@ -1,5 +1,6 @@
 package fun.teamti.goofyenchants.event;
 
+import fun.teamti.goofyenchants.enchantment.handler.SizeHandler;
 import fun.teamti.goofyenchants.enchantment.enchantments.RandomnessEnchantment;
 import fun.teamti.goofyenchants.enchantment.handler.SizeHandler;
 import fun.teamti.goofyenchants.enchantment.handler.UnoReverseHandler;
@@ -25,15 +26,16 @@ public class ForgeEventSubscriber {
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        SizeHandler.handlePlayerTick(event);
+//        SizeHandler.handlePlayerTick(event);
     }
 
     @SubscribeEvent
     public static void onLivingEquipmentChange(LivingEquipmentChangeEvent event) {
+        SizeHandler.handleLivingEquipmentChange(event);
         SizeHandler.handleLivingEquipmentChange(event);
     }
     @SubscribeEvent
     public static void onBlockBreak(BlockEvent.BreakEvent event) {
         RandomnessEnchantment.handleBlockBreak(event);
     }
-    }
+}

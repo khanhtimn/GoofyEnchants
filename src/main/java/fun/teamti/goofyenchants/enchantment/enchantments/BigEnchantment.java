@@ -41,6 +41,36 @@ public class BigEnchantment extends Enchantment implements IScale {
     }
 
     @Override
+    public float getMotionScaleValue(int level) {
+        return switch (level) {
+            case 1 -> 0.7F;
+            case 2 -> 0.6F;
+            case 3 -> 0.5F;
+            default -> 1.0F;
+        };
+    }
+
+    @Override
+    public float getAttackScaleValue(int level) {
+        return switch (level) {
+            case 1 -> 1.1F;
+            case 2 -> 1.25F;
+            case 3 -> 1.5F;
+            default -> 1.0F;
+        };
+    }
+
+    @Override
+    public float getAttackSpeedScaleValue(int level) {
+        return switch (level) {
+            case 1 -> 0.7F;
+            case 2 -> 0.6F;
+            case 3 -> 0.5F;
+            default -> 1.0F;
+        };
+    }
+
+    @Override
     public int getMaxLevel() {
         return 3;
     }
