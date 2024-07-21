@@ -3,7 +3,8 @@ package fun.teamti.goofyenchants;
 import com.mojang.logging.LogUtils;
 import fun.teamti.goofyenchants.init.ModEnchantments;
 import fun.teamti.goofyenchants.init.ModItems;
-import fun.teamti.goofyenchants.init.ModServer;
+import fun.teamti.goofyenchants.init.ModNetwork;
+import fun.teamti.goofyenchants.init.ModScale;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -28,12 +29,13 @@ public class GoofyEnchants
         modEventBus.addListener(this::commonSetup);
         ModItems.ITEMS.register(modEventBus);
         ModEnchantments.ENCHANTMENTS.register(modEventBus);
-        ModServer.register();
 
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+        ModNetwork.init();
+        ModScale.init();
     }
 }

@@ -1,6 +1,7 @@
-package fun.teamti.goofyenchants.server;
+package fun.teamti.goofyenchants.network.packet;
 
-import fun.teamti.goofyenchants.client.ClientHandler;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.network.NetworkEvent;
@@ -26,7 +27,10 @@ public class UnoReverseAnimationPacket {
         NetworkEvent.Context context = contextSupplier.get();
         context.enqueueWork(() -> {
             // Client-side handling to play custom animation
-            ClientHandler.handleUnoReverseAnimation(itemStack);
+            LocalPlayer player = Minecraft.getInstance().player;
+            if (player != null) {
+                Minecraft.getInstance().gameRenderer.displayItemActivation(itemStack);
+            }
         });
         context.setPacketHandled(true);
     }
