@@ -34,9 +34,6 @@ public class SmallEnchantment extends Enchantment implements IScale {
         };
     }
 
-    public SmallEnchantment() {
-        this(Rarity.RARE, EnchantmentCategory.ARMOR_HEAD, EquipmentSlot.HEAD);
-    }
     @Override
     public float getReachScaleValue(int level) {
         return switch (level) {
@@ -47,35 +44,12 @@ public class SmallEnchantment extends Enchantment implements IScale {
         };
     }
 
-    @SuppressWarnings("SameParameterValue")
-    protected SmallEnchantment(Rarity rarity, EnchantmentCategory category, EquipmentSlot... slots) {
-        super(rarity, category, slots);
     @Override
     public float getMotionScaleValue(int level) {
         return switch (level) {
             case 1 -> 1.5F;
             case 2 -> 1.8F;
             case 3 -> 2.0F;
-            default -> 1.0F;
-        };
-    }
-
-    @Override
-    public float getScaleValue(int level) {
-        return switch (level) {
-            case 1 -> 0.5F;
-            case 2 -> 0.3F;
-            case 3 -> 0.1F;
-            default -> 1.0F;
-        };
-    }
-
-    @Override
-    public float getReachScaleValue(int level) {
-        return switch (level) {
-            case 1 -> 0.7F;
-            case 2 -> 0.5F;
-            case 3 -> 0.2F;
             default -> 1.0F;
         };
     }
@@ -129,28 +103,4 @@ public class SmallEnchantment extends Enchantment implements IScale {
         };
     }
 
-    @Override
-    public int getMaxLevel() {
-        return 3;
-    }
-
-    @Override
-    public boolean isTreasureOnly() {
-        return true;
-    }
-
-    @Override
-    public int getMinCost(int pEnchantmentLevel) {
-        return pEnchantmentLevel * 10;
-    }
-
-    @Override
-    public int getMaxCost(int pEnchantmentLevel) {
-        return this.getMinCost(pEnchantmentLevel) + 15;
-    }
-
-    @Override
-    protected boolean checkCompatibility(@NotNull Enchantment pOther) {
-        return !pOther.equals(ModEnchantments.BIG.get());
-    }
 }
