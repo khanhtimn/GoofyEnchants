@@ -23,7 +23,7 @@ public class ForgeEventSubscriber {
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        SizeHandler.handlePlayerTick(event);
+//        SizeHandler.handlePlayerTick(event);
     }
 
     @SubscribeEvent
