@@ -3,13 +3,21 @@ package fun.teamti.goofyenchants.enchantment.enchantments;
 import fun.teamti.goofyenchants.init.ModEnchantments;
 import fun.teamti.goofyenchants.util.IScale;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import org.jetbrains.annotations.NotNull;
 
 public class BigEnchantment extends Enchantment implements IScale {
-    public BigEnchantment(Rarity pRarity, EquipmentSlot... pApplicableSlots) {
-        super(pRarity, EnchantmentCategory.ARMOR_HEAD, pApplicableSlots);
+
+    public BigEnchantment() {
+        this(Rarity.RARE, EnchantmentCategory.ARMOR_HEAD, EquipmentSlot.HEAD);
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    protected BigEnchantment(Rarity rarity, EnchantmentCategory category, EquipmentSlot... slots) {
+        super(rarity, category, slots);
     }
 
     @Override
@@ -80,6 +88,18 @@ public class BigEnchantment extends Enchantment implements IScale {
     @Override
     public int getMaxCost(int pEnchantmentLevel) {
         return this.getMinCost(pEnchantmentLevel) + 15;
+    }
+
+    @Override
+    public boolean canEnchant(ItemStack pStack) {
+        return pStack.getItem() instanceof ArmorItem &&
+                pStack.getEquipmentSlot() == EquipmentSlot.HEAD;
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(@NotNull ItemStack stack) {
+        return stack.getItem() instanceof ArmorItem &&
+                stack.getEquipmentSlot() == EquipmentSlot.HEAD;
     }
 
     @Override

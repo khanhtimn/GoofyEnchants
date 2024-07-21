@@ -18,7 +18,7 @@ import java.util.Random;
 public class GoofyEnchants
 {
     public static final String MOD_ID = "goofyenchants";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
     public static final Random rand = new Random();
 
 
