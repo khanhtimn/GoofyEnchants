@@ -9,10 +9,9 @@ public class ModScale {
     public static ScaleType SIZE;
 
     public static void init() {
-        SIZE_MODIFIER = registerModifier("size_modifier", new TypedScaleModifier(() -> SIZE));
+        SIZE_MODIFIER = registerModifier(new TypedScaleModifier(() -> SIZE));
         SIZE = registerScale();
 
-        // Register default base value modifiers
         ScaleTypes.HEIGHT.getDefaultBaseValueModifiers().add(SIZE_MODIFIER);
         ScaleTypes.WIDTH.getDefaultBaseValueModifiers().add(SIZE_MODIFIER);
         ScaleTypes.VISIBILITY.getDefaultBaseValueModifiers().add(SIZE_MODIFIER);
@@ -26,7 +25,7 @@ public class ModScale {
         return ScaleRegistries.register(ScaleRegistries.SCALE_TYPES, new ResourceLocation(GoofyEnchants.MOD_ID, "size"), builder.build());
     }
 
-    private static ScaleModifier registerModifier(String id, ScaleModifier modifier) {
-        return ScaleRegistries.register(ScaleRegistries.SCALE_MODIFIERS, new ResourceLocation(GoofyEnchants.MOD_ID, id), modifier);
+    private static ScaleModifier registerModifier(ScaleModifier modifier) {
+        return ScaleRegistries.register(ScaleRegistries.SCALE_MODIFIERS, new ResourceLocation(GoofyEnchants.MOD_ID, "size_modifier"), modifier);
     }
 }

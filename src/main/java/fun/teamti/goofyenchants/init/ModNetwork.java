@@ -16,8 +16,12 @@ public class ModNetwork {
     }
 
     public static void init() {
-        INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(GoofyEnchants.MOD_ID, "networking"), () -> "1.0", s -> true, s -> true);
-        INSTANCE.registerMessage(nextID(), UnoReverseAnimationPacket.class, UnoReverseAnimationPacket::toBytes, UnoReverseAnimationPacket::new, UnoReverseAnimationPacket::handle);
-
+        INSTANCE = NetworkRegistry.newSimpleChannel(
+                new ResourceLocation(GoofyEnchants.MOD_ID, "networking"),
+                () -> "1.0", s -> true, s -> true);
+        INSTANCE.registerMessage(nextID(), UnoReverseAnimationPacket.class,
+                UnoReverseAnimationPacket::toBytes,
+                UnoReverseAnimationPacket::new,
+                UnoReverseAnimationPacket::handle);
     }
 }

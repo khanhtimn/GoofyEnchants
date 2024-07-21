@@ -1,25 +1,17 @@
 package fun.teamti.goofyenchants.enchantment.enchantments;
 
-import fun.teamti.goofyenchants.GoofyEnchants;
 import fun.teamti.goofyenchants.init.ModEnchantments;
-import fun.teamti.goofyenchants.init.ModItems;
-import fun.teamti.goofyenchants.util.ModEnchantmentCategory;
-import net.minecraft.core.Registry;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.event.level.BlockEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 
 
@@ -32,13 +24,8 @@ import java.util.*;
 
 public class RandomnessEnchantment extends Enchantment {
 
-    public RandomnessEnchantment() {
-        this(Rarity.VERY_RARE, ModEnchantmentCategory.WEAPON_DIGGER, EquipmentSlot.MAINHAND);
-    }
-
-    @SuppressWarnings("SameParameterValue")
-    protected RandomnessEnchantment(Rarity rarity, EnchantmentCategory category, EquipmentSlot... slots) {
-        super(rarity, category, slots);
+    public RandomnessEnchantment(Rarity rarity, EquipmentSlot... slots) {
+        super(rarity, EnchantmentCategory.DIGGER, slots);
     }
 
     @Override

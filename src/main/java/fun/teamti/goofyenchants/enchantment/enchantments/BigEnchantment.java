@@ -11,13 +11,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class BigEnchantment extends Enchantment implements IScale {
 
-    public BigEnchantment() {
-        this(Rarity.RARE, EnchantmentCategory.ARMOR_HEAD, EquipmentSlot.HEAD);
-    }
-
-    @SuppressWarnings("SameParameterValue")
-    protected BigEnchantment(Rarity rarity, EnchantmentCategory category, EquipmentSlot... slots) {
-        super(rarity, category, slots);
+    public BigEnchantment(Rarity rarity, EquipmentSlot... slots) {
+        super(rarity, EnchantmentCategory.ARMOR_HEAD, slots);
     }
 
     @Override

@@ -2,23 +2,13 @@ package fun.teamti.goofyenchants.enchantment.enchantments;
 
 import fun.teamti.goofyenchants.util.ModEnchantmentCategory;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentCategory;
-import org.jetbrains.annotations.NotNull;
+
 
 public class UnoReverseEnchantment extends Enchantment {
 
-
-    public UnoReverseEnchantment() {
-        this(Rarity.RARE, ModEnchantmentCategory.SHIELD, EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND);
-    }
-
-    @SuppressWarnings("SameParameterValue")
-    protected UnoReverseEnchantment(Rarity rarity, EnchantmentCategory category, EquipmentSlot... slots) {
-        super(rarity, category, slots);
+    public UnoReverseEnchantment(Rarity rarity, EquipmentSlot... slots) {
+        super(rarity, ModEnchantmentCategory.SHIELD, slots);
     }
 
     @Override
