@@ -13,5 +13,4 @@ public class ModItems {
 
     public static final RegistryObject<Item> UNO_REVERSE = ITEMS.register("uno_reverse",
             () -> new UnoReverseItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).setNoRepair()));
-
 }

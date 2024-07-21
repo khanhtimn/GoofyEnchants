@@ -1,6 +1,7 @@
 package fun.teamti.goofyenchants.init;
 
 import fun.teamti.goofyenchants.GoofyEnchants;
+import fun.teamti.goofyenchants.enchantment.curses.DisloyaltyCurse;
 import fun.teamti.goofyenchants.enchantment.enchantments.BigEnchantment;
 import fun.teamti.goofyenchants.enchantment.enchantments.SmallEnchantment;
 import fun.teamti.goofyenchants.enchantment.enchantments.UnoReverseEnchantment;
@@ -26,5 +27,9 @@ public class ModEnchantments {
 
     public static final RegistryObject<Enchantment> BIG = ENCHANTMENTS
             .register("big", () -> new BigEnchantment(
+                    Enchantment.Rarity.RARE));
+
+    public static final RegistryObject<Enchantment> DISLOYALTY = ENCHANTMENTS
+            .register("disloyalty", () -> new DisloyaltyCurse(
                     Enchantment.Rarity.RARE));
 }

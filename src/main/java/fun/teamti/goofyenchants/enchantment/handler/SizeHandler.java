@@ -23,17 +23,10 @@ public class SizeHandler {
     private static final ScaleType ATTACK_SPEED_SCALE_TYPE = ScaleTypes.ATTACK_SPEED;
 
 
-
     public static void handleLivingEquipmentChange(LivingEquipmentChangeEvent event) {
         LivingEntity entity = event.getEntity();
         updateEntityScale(entity);
     }
-
-//    public static void handlePlayerTick(TickEvent.PlayerTickEvent event) {
-//        if (event.phase == TickEvent.Phase.END) {
-//            updateEntityScale(event.player);
-//        }
-//    }
 
     private static void updateEntityScale(LivingEntity entity) {
         ScaleData sizeScaleData = SIZE_SCALE_TYPE.getScaleData(entity);
