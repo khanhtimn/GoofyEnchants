@@ -1,0 +1,13 @@
+{
+  "goofyenchants.title": "GoofyEnchants",
+
+  "itemGroup.geEnchantedBooks": "GoofyEnchants",
+
+  "enchantment.goofyenchants.big": "Khổng lồ hoá",
+  "enchantment.goofyenchants.small": "Khổng lồ tí hon",
+  "enchantment.goofyenchants.luck_of_the_snow": "Luck of the Snow",
+  "enchantment.goofyenchants.randomness": "Randomness",
+
+  "enchantment.goofyenchants.luck_of_the_snow.desc": "Increase the probability of catching treasures and decrease the probability of catching fish and trash, when fishing in snowy or cold biomes.",
+  "enchantment.goofyenchants.randomness.desc": "1/1.000.000 chances to get random items on destroys block. ( Breaked blocks drop no exp )"
+}
