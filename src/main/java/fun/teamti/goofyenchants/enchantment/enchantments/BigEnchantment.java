@@ -98,6 +98,6 @@ public class BigEnchantment extends Enchantment implements IScale {
 
     @Override
     protected boolean checkCompatibility(@NotNull Enchantment pOther) {
-        return !(pOther instanceof SmallEnchantment) && super.checkCompatibility(pOther);
+        return !(pOther instanceof SmallEnchantment);
     }
 }

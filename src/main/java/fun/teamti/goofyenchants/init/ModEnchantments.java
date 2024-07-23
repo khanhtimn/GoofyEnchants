@@ -3,7 +3,7 @@ package fun.teamti.goofyenchants.init;
 import fun.teamti.goofyenchants.GoofyEnchants;
 import fun.teamti.goofyenchants.enchantment.curses.DisloyaltyCurse;
 import fun.teamti.goofyenchants.enchantment.enchantments.BigEnchantment;
-import fun.teamti.goofyenchants.enchantment.enchantments.RandomnessEnchantment;
+import fun.teamti.goofyenchants.enchantment.curses.RandomnessCurse;
 import fun.teamti.goofyenchants.enchantment.enchantments.SmallEnchantment;
 import fun.teamti.goofyenchants.enchantment.enchantments.UnoReverseEnchantment;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -35,6 +35,6 @@ public class ModEnchantments {
                     Enchantment.Rarity.RARE));
 
     public static final RegistryObject<Enchantment> RANDOMNESS = ENCHANTMENTS
-            .register("randomness", () -> new RandomnessEnchantment(
+            .register("randomness", () -> new RandomnessCurse(
                     Enchantment.Rarity.RARE));
 }

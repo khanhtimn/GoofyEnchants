@@ -1,8 +1,9 @@
 package fun.teamti.goofyenchants.event;
 
 import fun.teamti.goofyenchants.enchantment.handler.DisloyaltyHandler;
+import fun.teamti.goofyenchants.enchantment.handler.RandomnessHandler;
 import fun.teamti.goofyenchants.enchantment.handler.SizeHandler;
-import fun.teamti.goofyenchants.enchantment.enchantments.RandomnessEnchantment;
+import fun.teamti.goofyenchants.enchantment.curses.RandomnessCurse;
 import fun.teamti.goofyenchants.enchantment.handler.UnoReverseHandler;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
@@ -43,6 +44,6 @@ public class ForgeEventSubscriber {
 
     @SubscribeEvent
     public static void onBlockBreak(BlockEvent.BreakEvent event) {
-        RandomnessEnchantment.handleBlockBreak(event);
+        RandomnessHandler.handleRandomDrop(event, event.getLevel(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ());
     }
 }

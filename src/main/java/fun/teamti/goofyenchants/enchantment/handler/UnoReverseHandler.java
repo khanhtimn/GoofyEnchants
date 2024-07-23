@@ -39,9 +39,9 @@ public class UnoReverseHandler {
         ItemStack activeItem = player.getUseItem();
 
         if (activeItem.getItem() instanceof ShieldItem && player.isBlocking()) {
-            int level = activeItem.getEnchantmentLevel(ModEnchantments.UNO_REVERSE.get());
-            if (level > 0) {
-                double chance = level * 0.1;
+            int enchantmentLevel = activeItem.getEnchantmentLevel(ModEnchantments.UNO_REVERSE.get());
+            if (enchantmentLevel > 0) {
+                double chance = enchantmentLevel * 0.1;
                 if (GoofyEnchants.rand.nextDouble() < chance) {
                     event.setCanceled(true);
                     SCHEDULED_TASKS.add(() -> reflectDamageAndKnockback(player, (LivingEntity) attacker, event.getAmount()));
