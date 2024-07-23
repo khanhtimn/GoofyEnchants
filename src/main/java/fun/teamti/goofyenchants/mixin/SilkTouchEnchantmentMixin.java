@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(UntouchingEnchantment.class)
 public class SilkTouchEnchantmentMixin extends Enchantment {
     protected SilkTouchEnchantmentMixin(Rarity rarity, EnchantmentCategory category, EquipmentSlot... slots){
-        super(rarity, category, slots);
+        super(rarity, EnchantmentCategory.DIGGER, slots);
     }
 
     @Override

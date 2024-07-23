@@ -2,7 +2,7 @@
   "required": true,
   "package": "fun.teamti.goofyenchants.mixin",
   "compatibilityLevel": "JAVA_17",
-  "refmap": "advanced_enchantments.refmap.json",
+  "refmap": "goofyenchants.refmap.json",
   "mixins": [
     "ArrowItemMixin",
     "BlockMixin",

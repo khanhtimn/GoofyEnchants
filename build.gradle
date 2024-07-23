@@ -7,6 +7,10 @@ plugins {
     id 'org.spongepowered.mixin' version '0.7.+'
 }
 
+apply plugin: 'net.minecraftforge.gradle'
+
+apply plugin: 'org.spongepowered.mixin'
+
 version = mod_version
 group = mod_group_id
 
@@ -71,10 +75,14 @@ minecraft {
             // "REGISTRYDUMP": For getting the contents of all registries.
             property 'forge.logging.markers', 'REGISTRIES'
 
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             // Recommended logging level for the console
             // You can set various levels here.
             // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
             property 'forge.logging.console.level', 'debug'
+
+            arg "-mixin.config=goofyenchants.mixins.json"
 
             mods {
                 "${mod_id}" {
@@ -190,7 +198,8 @@ tasks.named('jar', Jar).configure {
                 'Implementation-Title'    : project.name,
                 'Implementation-Version'  : project.jar.archiveVersion,
                 'Implementation-Vendor'   : mod_authors,
-                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "MixinConfigs"            : "goofyenchants.mixins.json"
         ])
     }
 
@@ -219,4 +228,11 @@ publishing {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+mixin {
+    add sourceSets.main, 'goofyenchants.refmap.json'
+    config 'goofyenchants.mixins.json'
+
+    debug.verbose = true
+    debug.export = true
 }

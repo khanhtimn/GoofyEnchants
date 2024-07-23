@@ -39,4 +39,5 @@ public class ModEnchantments {
                     Enchantment.Rarity.RARE,
                     EquipmentSlot.MAINHAND
             ));
+
 }
