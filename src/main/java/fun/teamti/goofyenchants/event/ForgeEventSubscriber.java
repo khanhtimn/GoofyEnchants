@@ -1,10 +1,11 @@
 package fun.teamti.goofyenchants.event;
 
+import fun.teamti.goofyenchants.enchantment.handler.DisloyaltyHandler;
 import fun.teamti.goofyenchants.enchantment.handler.SizeHandler;
 import fun.teamti.goofyenchants.enchantment.enchantments.RandomnessEnchantment;
-import fun.teamti.goofyenchants.enchantment.handler.SizeHandler;
 import fun.teamti.goofyenchants.enchantment.handler.UnoReverseHandler;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.level.BlockEvent;
@@ -25,15 +26,21 @@ public class ForgeEventSubscriber {
     }
 
     @SubscribeEvent
-    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-//        SizeHandler.handlePlayerTick(event);
-    }
-
-    @SubscribeEvent
     public static void onLivingEquipmentChange(LivingEquipmentChangeEvent event) {
         SizeHandler.handleLivingEquipmentChange(event);
         SizeHandler.handleLivingEquipmentChange(event);
     }
+
+    @SubscribeEvent
+    public static void onEntityJoinLevel(EntityJoinLevelEvent event) {
+        DisloyaltyHandler.handleTridentThrow(event);
+    }
+
+    @SubscribeEvent
+    public static void onLevelTick(TickEvent.LevelTickEvent event) {
+        DisloyaltyHandler.handleTridentTick(event);
+    }
+
     @SubscribeEvent
     public static void onBlockBreak(BlockEvent.BreakEvent event) {
         RandomnessEnchantment.handleBlockBreak(event);

@@ -1,10 +1,7 @@
 package fun.teamti.goofyenchants;
 
 import com.mojang.logging.LogUtils;
-import fun.teamti.goofyenchants.init.ModEnchantments;
-import fun.teamti.goofyenchants.init.ModItems;
-import fun.teamti.goofyenchants.init.ModNetwork;
-import fun.teamti.goofyenchants.init.ModScale;
+import fun.teamti.goofyenchants.init.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -28,6 +25,7 @@ public class GoofyEnchants
 
         modEventBus.addListener(this::commonSetup);
         ModItems.ITEMS.register(modEventBus);
+        ModEntity.ENTITY_TYPES.register(modEventBus);
         ModEnchantments.ENCHANTMENTS.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);

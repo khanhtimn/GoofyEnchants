@@ -1,6 +1,5 @@
 package fun.teamti.goofyenchants.enchantment.enchantments;
 
-import fun.teamti.goofyenchants.init.ModEnchantments;
 import fun.teamti.goofyenchants.util.IScale;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
@@ -99,6 +98,6 @@ public class BigEnchantment extends Enchantment implements IScale {
 
     @Override
     protected boolean checkCompatibility(@NotNull Enchantment pOther) {
-        return !pOther.equals(ModEnchantments.SMALL.get());
+        return !(pOther instanceof SmallEnchantment) && super.checkCompatibility(pOther);
     }
 }
