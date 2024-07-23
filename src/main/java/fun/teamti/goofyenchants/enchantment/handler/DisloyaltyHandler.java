@@ -7,7 +7,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrownTrident;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -19,7 +20,8 @@ import java.util.List;
 
 public class DisloyaltyHandler {
     private static final int FLY_TIME_MAX = 30;
-    private static final double SEARCH_RADIUS = 64;
+    private static final double SEARCH_RADIUS = 160;
+    private static final int DESPAWN_TIME = 400;
 
     public static void handleTridentThrow(EntityJoinLevelEvent event) {
         if (event.getEntity() instanceof ThrownTrident trident) {
@@ -62,43 +64,32 @@ public class DisloyaltyHandler {
 
         for (ThrownTrident trident : disloyalTridents) {
             //GoofyEnchants.LOGGER.info("Processing Disloyal Trident at {}", trident.position());
-            Player owner = (Player) trident.getOwner();
-            if (owner == null) {
-                //GoofyEnchants.LOGGER.info("Trident has no owner, skipping");
-                continue;
-            }
-
-            int flyTicks = trident.getPersistentData().getInt("flyTicks");
+            CompoundTag nbt = trident.getPersistentData();
+            int flyTicks = nbt.getInt("flyTicks");
             flyTicks++;
-            trident.getPersistentData().putInt("flyTicks", flyTicks);
-            //GoofyEnchants.LOGGER.info("Trident flyTicks: {}", flyTicks);
 
             if (flyTicks > FLY_TIME_MAX) {
-                if (!isAcceptableReturnOwner(owner)) {
-                    trident.discard();
-                    return;
-                } else {
-                    trident.setNoPhysics(true);
+                Entity owner = trident.getOwner();
+                if (owner instanceof LivingEntity user) {
+                    Vec3 direction = new Vec3(user.getX() - trident.getX(), user.getY() - trident.getY(), user.getZ() - trident.getZ());
+                    trident.setDeltaMovement(trident.getDeltaMovement().scale(0.9).add(direction.normalize().scale(0.25)));
+                    trident.setNoGravity(true);
 
-                    Vec3 direction = owner.getEyePosition().subtract(trident.position());
-                    trident.setPosRaw(trident.getX(), trident.getY() + direction.y * 0.015D, trident.getZ());
-
-                    double speed = 1.05D;
-                    trident.setDeltaMovement(trident.getDeltaMovement().scale(0.95D).add(direction.normalize().scale(speed)));
-
-                    if (trident.clientSideReturnTridentTickCount == 0) {
-                        trident.playSound(SoundEvents.TRIDENT_RETURN, 10.0F, 1.0F);
+                    if (trident.level().getGameTime() % 10 == 0) {
+                        trident.playSound(SoundEvents.TRIDENT_RETURN, 1.0F, 1.0F);
                     }
 
-                    ++trident.clientSideReturnTridentTickCount;
-
-                    if (trident.position().closerThan(owner.position(), 10.0D)) {
+                    if (trident.position().closerThan(owner.position(), 2.0D)) {
                         //GoofyEnchants.LOGGER.info("Trident close to owner, applying damage");
                         owner.hurt(trident.damageSources().trident(trident, owner), 8.0F);
-                        trident.discard();
                     }
                 }
+                if (flyTicks > FLY_TIME_MAX + DESPAWN_TIME) {
+                    trident.discard();
+                }
+
             }
+            trident.getPersistentData().putInt("flyTicks", flyTicks);
         }
     }
 
@@ -116,13 +107,5 @@ public class DisloyaltyHandler {
             }
         }
         return false;
-    }
-
-    private static boolean isAcceptableReturnOwner(Player owner) {
-        if (owner != null && owner.isAlive()) {
-            return !(owner instanceof ServerPlayer) || !owner.isSpectator();
-        } else {
-            return false;
-        }
     }
 }

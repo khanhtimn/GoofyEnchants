@@ -1,10 +1,7 @@
 package fun.teamti.goofyenchants.enchantment.enchantments;
 
-import fun.teamti.goofyenchants.init.ModEnchantments;
 import fun.teamti.goofyenchants.util.IScale;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import org.jetbrains.annotations.NotNull;
@@ -86,14 +83,9 @@ public class SmallEnchantment extends Enchantment implements IScale {
         return this.getMinCost(pEnchantmentLevel) + 15;
     }
 
-//    @Override
-//    public boolean canEnchant(ItemStack itemStack) {
-//        return itemStack.getItem() instanceof ArmorItem && itemStack.getEquipmentSlot() == EquipmentSlot.HEAD || super.canEnchant(itemStack);
-//    }
-
     @Override
     protected boolean checkCompatibility(@NotNull Enchantment pOther) {
-        return !pOther.equals(ModEnchantments.BIG.get());
+        return !(pOther instanceof BigEnchantment) && super.checkCompatibility(pOther);
     }
 
 }
