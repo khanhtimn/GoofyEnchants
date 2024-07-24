@@ -1,6 +1,6 @@
 package fun.teamti.goofyenchants.enchantment.handler;
 
-import fun.teamti.goofyenchants.init.ModEnchantments;
+import fun.teamti.goofyenchants.init.ModEnchantment;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -17,7 +17,7 @@ public class RandomnessHandler {
         Player player = event.getPlayer();
         ItemStack stack = player.getMainHandItem();
 
-        int enchantmentLevel = stack.getEnchantmentLevel(ModEnchantments.RANDOMNESS.get());
+        int enchantmentLevel = stack.getEnchantmentLevel(ModEnchantment.RANDOMNESS.get());
         if (enchantmentLevel <= 0 || event.getLevel().isClientSide()) {
             return;
         }

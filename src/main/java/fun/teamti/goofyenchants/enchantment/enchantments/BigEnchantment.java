@@ -17,7 +17,7 @@ public class BigEnchantment extends Enchantment implements IScale {
     @Override
     public float getScaleValue(int level) {
         return switch (level) {
-            case 1 -> 1.5F;
+            case 1 -> 1.6F;
             case 2 -> 2.0F;
             case 3 -> 2.5F;
             default -> 1.0F;
@@ -37,9 +37,19 @@ public class BigEnchantment extends Enchantment implements IScale {
     @Override
     public float getMotionScaleValue(int level) {
         return switch (level) {
-            case 1 -> 0.7F;
-            case 2 -> 0.6F;
-            case 3 -> 0.5F;
+            case 1 -> 0.5F;
+            case 2 -> 0.4F;
+            case 3 -> 0.3F;
+            default -> 1.0F;
+        };
+    }
+
+    @Override
+    public float getJumpHeightScaleValue(int level) {
+        return switch (level) {
+            case 1 -> 0.625F;
+            case 2 -> 0.5F;
+            case 3 -> 0.45F;
             default -> 1.0F;
         };
     }
@@ -60,6 +70,16 @@ public class BigEnchantment extends Enchantment implements IScale {
             case 1 -> 0.7F;
             case 2 -> 0.6F;
             case 3 -> 0.5F;
+            default -> 1.0F;
+        };
+    }
+
+    @Override
+    public float getVisibilityScaleValue(int level) {
+        return switch (level) {
+            case 1 -> 1.5F;
+            case 2 -> 2.0F;
+            case 3 -> 2.5F;
             default -> 1.0F;
         };
     }

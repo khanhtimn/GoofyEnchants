@@ -17,7 +17,7 @@ public class SmallEnchantment extends Enchantment implements IScale {
     public float getScaleValue(int level) {
         return switch (level) {
             case 1 -> 0.5F;
-            case 2 -> 0.3F;
+            case 2 -> 0.25F;
             case 3 -> 0.1F;
             default -> 1.0F;
         };
@@ -44,6 +44,16 @@ public class SmallEnchantment extends Enchantment implements IScale {
     }
 
     @Override
+    public float getJumpHeightScaleValue(int level) {
+        return switch (level) {
+            case 1 -> 2.0F;
+            case 2 -> 4.0F;
+            case 3 -> 10.0F;
+            default -> 1.0F;
+        };
+    }
+
+    @Override
     public float getAttackScaleValue(int level) {
         return switch (level) {
             case 1 -> 0.9F;
@@ -56,9 +66,18 @@ public class SmallEnchantment extends Enchantment implements IScale {
     @Override
     public float getAttackSpeedScaleValue(int level) {
         return switch (level) {
-            case 1 -> 1.5F;
-            case 2 -> 1.8F;
-            case 3 -> 2.0F;
+            case 1 -> 0.8F;
+            case 2 -> 0.7F;
+            case 3 -> 0.6F;
+            default -> 1.0F;
+        };
+    }
+
+    @Override
+    public float getVisibilityScaleValue(int level) {
+        return switch (level) {
+            case 2 -> 0.78125F;
+            case 3 -> 0.625F;
             default -> 1.0F;
         };
     }

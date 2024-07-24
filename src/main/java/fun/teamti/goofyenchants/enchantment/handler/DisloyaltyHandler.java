@@ -1,7 +1,7 @@
 package fun.teamti.goofyenchants.enchantment.handler;
 
 import fun.teamti.goofyenchants.GoofyEnchants;
-import fun.teamti.goofyenchants.init.ModEnchantments;
+import fun.teamti.goofyenchants.init.ModEnchantment;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -29,7 +29,7 @@ public class DisloyaltyHandler {
             // Try to access the Trident item data directly
             if (tridentNBT.contains("Trident", CompoundTag.TAG_COMPOUND)) {
                 CompoundTag tridentItemNBT = tridentNBT.getCompound("Trident");
-                if (hasEnchantment(tridentItemNBT, ModEnchantments.DISLOYALTY.getId())) {
+                if (hasEnchantment(tridentItemNBT, ModEnchantment.DISLOYALTY.getId())) {
                     //GoofyEnchants.LOGGER.info("Trident has Disloyalty");
                     trident.getPersistentData().putBoolean("hasDisloyalty", true);
                 }

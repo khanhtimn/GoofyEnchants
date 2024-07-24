@@ -1,0 +1,11 @@
+{
+  "goofyenchants.title": "Goofy Enchantments",
+  "itemGroup.geEnchantedBooks": "Goofy Enchantments",
+  "enchantment.goofyenchants.big": "Tiny Titans",
+  "enchantment.goofyenchants.small": "Tiny but Deadly",
+  "enchantment.goofyenchants.disloyalty": "Disloyalty",
+  "enchantment.goofyenchants.randomness": "Gacha",
+  "enchantment.goofyenchants.big.desc": "Turns into a giant when wearing a helmet with this enchantment",
+  "enchantment.goofyenchants.small.desc": "Turns into an ant when wearing a helmet with this enchantment",
+  "enchantment.goofyenchants.randomness.desc": "Chance to drop random items when breaking a block"
+}
