@@ -26,10 +26,12 @@ public class GoofyEnchants
         modEventBus.addListener(this::commonSetup);
         ModItems.ITEMS.register(modEventBus);
         ModEntity.ENTITY_TYPES.register(modEventBus);
+        ModSound.SOUND_EVENTS.register(modEventBus);
         ModEnchantment.ENCHANTMENTS.register(modEventBus);
         ModParticle.PARTICLE_TYPES.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
     }
+
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {

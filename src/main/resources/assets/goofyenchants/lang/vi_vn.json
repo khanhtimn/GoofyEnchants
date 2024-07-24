@@ -1,10 +1,12 @@
 {
   "goofyenchants.title": "Goofy Enchantments",
-  "itemGroup.geEnchantedBooks": "Goofy Enchantments",
+  "item.goofyenchants.uno_reverse": "Thẻ UNO© Reverse",
+  "enchantment.goofyenchants.uno_reverse": "UNO© Reverse",
   "enchantment.goofyenchants.big": "Khổng lồ hoá",
   "enchantment.goofyenchants.small": "Khổng lồ tí hon",
   "enchantment.goofyenchants.disloyalty": "Lòng đéo trung thành",
   "enchantment.goofyenchants.randomness": "Gacha",
+  "enchantment.goofyenchants.uno_reverse.desc" : "Phản sát thương khi chặn bằng khiên",
   "enchantment.goofyenchants.big.desc": "Hoá to khi mặc mũ có cường hoá này",
   "enchantment.goofyenchants.small.desc": "Hoá nhỏ khi mặc mũ có cường hoá này",
   "enchantment.goofyenchants.randomness.desc": "Tỉ lệ rớt vật phẩm ngẫu nhiên mỗi khi đập khối"
