@@ -14,8 +14,9 @@ public class ModScale {
 
         ScaleTypes.HEIGHT.getDefaultBaseValueModifiers().add(SIZE_MODIFIER);
         ScaleTypes.WIDTH.getDefaultBaseValueModifiers().add(SIZE_MODIFIER);
-        ScaleTypes.VISIBILITY.getDefaultBaseValueModifiers().add(SIZE_MODIFIER);
         ScaleTypes.MOTION.getDefaultBaseValueModifiers().add(SIZE_MODIFIER);
+        ScaleTypes.VISIBILITY.getDefaultBaseValueModifiers().add(SIZE_MODIFIER);
+        ScaleTypes.JUMP_HEIGHT.getDefaultBaseValueModifiers().add(SIZE_MODIFIER);
     }
 
     private static ScaleType registerScale() {

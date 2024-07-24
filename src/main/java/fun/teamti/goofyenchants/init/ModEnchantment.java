@@ -2,6 +2,7 @@ package fun.teamti.goofyenchants.init;
 
 import fun.teamti.goofyenchants.GoofyEnchants;
 import fun.teamti.goofyenchants.enchantment.curses.DisloyaltyCurse;
+import fun.teamti.goofyenchants.enchantment.curses.SwappinessCurse;
 import fun.teamti.goofyenchants.enchantment.enchantments.BigEnchantment;
 import fun.teamti.goofyenchants.enchantment.curses.RandomnessCurse;
 import fun.teamti.goofyenchants.enchantment.enchantments.SmallEnchantment;
@@ -12,7 +13,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class ModEnchantments {
+public class ModEnchantment {
     public static final DeferredRegister<Enchantment> ENCHANTMENTS = DeferredRegister
             .create(ForgeRegistries.ENCHANTMENTS, GoofyEnchants.MOD_ID);
 
@@ -36,5 +37,9 @@ public class ModEnchantments {
 
     public static final RegistryObject<Enchantment> RANDOMNESS = ENCHANTMENTS
             .register("randomness", () -> new RandomnessCurse(
+                    Enchantment.Rarity.RARE));
+
+    public static final RegistryObject<Enchantment> SWAPPINESS = ENCHANTMENTS
+            .register("swappiness", () -> new SwappinessCurse(
                     Enchantment.Rarity.RARE));
 }

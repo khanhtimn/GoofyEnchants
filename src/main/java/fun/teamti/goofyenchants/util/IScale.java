@@ -6,4 +6,6 @@ public interface IScale {
     float getMotionScaleValue(int level);
     float getAttackScaleValue(int level);
     float getAttackSpeedScaleValue(int level);
+    float getVisibilityScaleValue(int level);
+    float getJumpHeightScaleValue(int level);
 }

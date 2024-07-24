@@ -1,7 +1,7 @@
 package fun.teamti.goofyenchants.enchantment.handler;
 
 import fun.teamti.goofyenchants.GoofyEnchants;
-import fun.teamti.goofyenchants.init.ModEnchantments;
+import fun.teamti.goofyenchants.init.ModEnchantment;
 import fun.teamti.goofyenchants.init.ModItems;
 import fun.teamti.goofyenchants.init.ModNetwork;
 import fun.teamti.goofyenchants.network.packet.UnoReverseAnimationPacket;
@@ -39,7 +39,7 @@ public class UnoReverseHandler {
         ItemStack activeItem = player.getUseItem();
 
         if (activeItem.getItem() instanceof ShieldItem && player.isBlocking()) {
-            int enchantmentLevel = activeItem.getEnchantmentLevel(ModEnchantments.UNO_REVERSE.get());
+            int enchantmentLevel = activeItem.getEnchantmentLevel(ModEnchantment.UNO_REVERSE.get());
             if (enchantmentLevel > 0) {
                 double chance = enchantmentLevel * 0.1;
                 if (GoofyEnchants.rand.nextDouble() < chance) {
@@ -72,7 +72,7 @@ public class UnoReverseHandler {
             ItemStack unoReverseStack = new ItemStack(ModItems.UNO_REVERSE.get());
 
             // Send packet to play totem animation with our custom item
-            serverAttacker.connection.send(new ClientboundEntityEventPacket(serverAttacker, (byte) 35));
+            //serverAttacker.connection.send(new ClientboundEntityEventPacket(serverAttacker, (byte) 35));
 
             // Send a custom packet to set the totem item client-side
             ModNetwork.INSTANCE.send(PacketDistributor.PLAYER.with(() -> serverAttacker), new UnoReverseAnimationPacket(unoReverseStack));

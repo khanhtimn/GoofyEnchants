@@ -26,6 +26,6 @@ public class DisloyaltyCurse extends Enchantment {
 
     @Override
     protected boolean checkCompatibility(@NotNull Enchantment pOther) {
-        return !(pOther instanceof TridentLoyaltyEnchantment) && super.checkCompatibility(pOther);
+        return !(pOther instanceof TridentLoyaltyEnchantment);
     }
 }
