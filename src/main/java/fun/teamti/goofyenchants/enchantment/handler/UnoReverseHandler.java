@@ -5,7 +5,6 @@ import fun.teamti.goofyenchants.init.ModEnchantment;
 import fun.teamti.goofyenchants.init.ModItems;
 import fun.teamti.goofyenchants.init.ModNetwork;
 import fun.teamti.goofyenchants.network.packet.UnoReverseAnimationPacket;
-import net.minecraft.network.protocol.game.ClientboundEntityEventPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSources;
 import net.minecraft.world.entity.Entity;
