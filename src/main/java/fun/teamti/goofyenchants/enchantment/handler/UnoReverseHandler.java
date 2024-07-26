@@ -24,7 +24,7 @@ public class UnoReverseHandler {
 
     private static final List<Runnable> SCHEDULED_TASKS = new ArrayList<>();
 
-    public static void handlerLivingAttack(LivingAttackEvent event) {
+    public static void handleLivingAttack(LivingAttackEvent event) {
         if (!(event.getEntity() instanceof Player player)) {
             return;
         }
@@ -36,20 +36,20 @@ public class UnoReverseHandler {
         }
 
         ItemStack activeItem = player.getUseItem();
-
+        int enchantmentLevel = activeItem.getEnchantmentLevel(ModEnchantment.UNO_REVERSE.get());
+        if (enchantmentLevel <= 0) {
+            return;
+        }
         if (activeItem.getItem() instanceof ShieldItem && player.isBlocking()) {
-            int enchantmentLevel = activeItem.getEnchantmentLevel(ModEnchantment.UNO_REVERSE.get());
-            if (enchantmentLevel > 0) {
-                double chance = enchantmentLevel * 0.1;
-                if (GoofyEnchants.rand.nextDouble() < chance) {
-                    event.setCanceled(true);
-                    SCHEDULED_TASKS.add(() -> reflectDamageAndKnockback(player, (LivingEntity) attacker, event.getAmount()));
-                }
+            double chance = enchantmentLevel * 0.1;
+            if (GoofyEnchants.rand.nextDouble() < chance) {
+                event.setCanceled(true);
+                SCHEDULED_TASKS.add(() -> reflectDamageAndKnockback(player, (LivingEntity) attacker, event.getAmount()));
             }
         }
     }
 
-    public static void handlerServerTick(TickEvent.ServerTickEvent event) {
+    public static void handleServerTick(TickEvent.ServerTickEvent event) {
         if (event.phase == TickEvent.Phase.END) {
             List<Runnable> tasks = new ArrayList<>(SCHEDULED_TASKS);
             SCHEDULED_TASKS.clear();
@@ -70,10 +70,6 @@ public class UnoReverseHandler {
         if (attacker instanceof ServerPlayer serverAttacker) {
             ItemStack unoReverseStack = new ItemStack(ModItems.UNO_REVERSE.get());
 
-            // Send packet to play totem animation with our custom item
-            //serverAttacker.connection.send(new ClientboundEntityEventPacket(serverAttacker, (byte) 35));
-
-            // Send a custom packet to set the totem item client-side
             ModNetwork.INSTANCE.send(PacketDistributor.PLAYER.with(() -> serverAttacker), new UnoReverseAnimationPacket(unoReverseStack));
         }
     }

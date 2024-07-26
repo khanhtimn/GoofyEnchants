@@ -12,11 +12,11 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = GoofyEnchants.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class ServerEventsSubcriber {
+public class ServerEventsSubscriber {
 
     @SubscribeEvent
     public static void onLivingAttack(LivingAttackEvent event) {
-        UnoReverseHandler.handlerLivingAttack(event);
+        UnoReverseHandler.handleLivingAttack(event);
     }
 
     @SubscribeEvent
@@ -27,12 +27,11 @@ public class ServerEventsSubcriber {
     @SubscribeEvent
     public static void onLivingEquipmentChange(LivingEquipmentChangeEvent event) {
         SizeHandler.handleLivingEquipmentChange(event);
-        SizeHandler.handleLivingEquipmentChange(event);
     }
 
     @SubscribeEvent
     public static void onServerTick(TickEvent.ServerTickEvent event) {
-        UnoReverseHandler.handlerServerTick(event);
+        UnoReverseHandler.handleServerTick(event);
     }
 
     @SubscribeEvent
@@ -47,6 +46,7 @@ public class ServerEventsSubcriber {
 
     @SubscribeEvent
     public static void onBlockBreak(BlockEvent.BreakEvent event) {
-        RandomnessHandler.handleRandomDrop(event, event.getLevel(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ());
+        RandomnessHandler.handleRandomDrop(event);
+        SmeltingTouchHandler.handleSmeltingTouch(event);
     }
 }

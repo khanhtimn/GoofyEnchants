@@ -6,6 +6,7 @@ import fun.teamti.goofyenchants.enchantment.curses.SwappinessCurse;
 import fun.teamti.goofyenchants.enchantment.enchantments.BigEnchantment;
 import fun.teamti.goofyenchants.enchantment.curses.RandomnessCurse;
 import fun.teamti.goofyenchants.enchantment.enchantments.SmallEnchantment;
+import fun.teamti.goofyenchants.enchantment.enchantments.SmeltingTouchEnchantment;
 import fun.teamti.goofyenchants.enchantment.enchantments.UnoReverseEnchantment;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -41,5 +42,9 @@ public class ModEnchantment {
 
     public static final RegistryObject<Enchantment> SWAPPINESS = ENCHANTMENTS
             .register("swappiness", () -> new SwappinessCurse(
+                    Enchantment.Rarity.RARE));
+
+    public static final RegistryObject<Enchantment> SMELTING_TOUCH = ENCHANTMENTS
+            .register("smelting_touch", () -> new SmeltingTouchEnchantment(
                     Enchantment.Rarity.RARE));
 }
