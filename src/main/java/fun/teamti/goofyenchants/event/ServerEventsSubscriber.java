@@ -20,7 +20,8 @@ public class ServerEventsSubscriber {
     }
 
     @SubscribeEvent
-    public static void onEntityHurt(LivingHurtEvent event) {
+    public static void onLivingHurt(LivingHurtEvent event) {
+        CombustionHandler.handleShootingCombustion(event);
         SwappinessHandler.handleEntitySwapItem(event);
     }
 
