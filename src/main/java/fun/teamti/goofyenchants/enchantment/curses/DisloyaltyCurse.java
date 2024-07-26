@@ -21,7 +21,12 @@ public class DisloyaltyCurse extends Enchantment {
 
     @Override
     public boolean canEnchant(ItemStack pStack) {
-        return pStack.getItem() instanceof TridentItem;
+        return pStack.getItem() instanceof TridentItem || super.canEnchant(pStack);
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack) {
+        return stack.getItem() instanceof TridentItem || super.canApplyAtEnchantingTable(stack);
     }
 
     @Override
