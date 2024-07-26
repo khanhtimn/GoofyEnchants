@@ -7,9 +7,11 @@
   "enchantment.goofyenchants.disloyalty": "Disloyalty",
   "enchantment.goofyenchants.randomness": "Pandora's box",
   "enchantment.goofyenchants.smelting_touch": "Smelting Touch",
+  "enchantment.goofyenchants.combustion": "Lucky Ricochet",
   "enchantment.goofyenchants.uno_reverse.desc": "Reflects damage when blocking with a shield",
   "enchantment.goofyenchants.big.desc": "Turns into a giant when wearing a helmet with this enchantment",
   "enchantment.goofyenchants.small.desc": "Turns into an ant when wearing a helmet with this enchantment",
   "enchantment.goofyenchants.randomness.desc": "Chance to drop random items when breaking a block",
-  "enchantment.goofyenchants.smelting_touch.desc": "Automatically smelts mined blocks"
+  "enchantment.goofyenchants.smelting_touch.desc": "Automatically smelts mined blocks",
+  "enchantment.goofyenchants.combustion.desc": "Arrows have a chance of exploding when hitting an enemy"
 }
