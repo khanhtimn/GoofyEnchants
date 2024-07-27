@@ -130,6 +130,9 @@ repositories {
     maven {
         url = "https://jitpack.io"
     }
+    maven {
+        url = "https://cursemaven.com"
+    }
 }
 
 dependencies {
@@ -149,7 +152,19 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
     runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 
+    //Pehkui on compilation and runtime
     implementation fg.deobf("com.github.Virtuoel:Pehkui:${pehkui_version}")
+
+    //Xenon
+    runtimeOnly fg.deobf("curse.maven:Xenon-564239:5374393")
+    //Oculus
+    runtimeOnly fg.deobf("curse.maven:Oculus-581495:5299671")
+    //Ferritecore
+    runtimeOnly fg.deobf("curse.maven:FerriteCore-429235:4810975")
+    //ImmediatelyFast
+    runtimeOnly fg.deobf("curse.maven:ImmediatelyFast-686911:5425036")
+    //ModernFix
+    runtimeOnly fg.deobf("curse.maven:ModernFix-790626:5569652")
 
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
