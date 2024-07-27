@@ -7,7 +7,6 @@ import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -45,9 +44,4 @@ public class ServerEventsSubscriber {
         DisloyaltyHandler.handleTridentThrow(event);
     }
 
-    @SubscribeEvent
-    public static void onBlockBreak(BlockEvent.BreakEvent event) {
-        RandomnessHandler.handleRandomDrop(event);
-        SmeltingTouchHandler.handleSmeltingTouch(event);
-    }
 }
