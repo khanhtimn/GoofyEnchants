@@ -1,4 +1,4 @@
-package fun.teamti.goofyenchants.enchantment.curses;
+package fun.teamti.goofyenchants.enchantment.enchantments;
 
 import fun.teamti.goofyenchants.util.ModEnchantmentCategory;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -8,21 +8,30 @@ import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.enchantment.Enchantment;
 import org.jetbrains.annotations.NotNull;
 
+public class RandomnessEnchantment extends Enchantment {
 
-public class RandomnessCurse extends Enchantment {
-
-    public RandomnessCurse(Rarity rarity, EquipmentSlot... slots) {
+    public RandomnessEnchantment(Rarity rarity, EquipmentSlot... slots) {
         super(rarity, ModEnchantmentCategory.WEAPON_DIGGER, slots);
     }
 
     @Override
-    public boolean isCurse() {
+    public int getMaxLevel() {
+        return 5;
+    }
+
+    @Override
+    public boolean isTreasureOnly() {
         return true;
     }
 
     @Override
-    public int getMaxLevel() {
-        return 3;
+    public int getMinCost(int pEnchantmentLevel) {
+        return pEnchantmentLevel * 10;
+    }
+
+    @Override
+    public int getMaxCost(int pEnchantmentLevel) {
+        return this.getMinCost(pEnchantmentLevel) + 15;
     }
 
     @Override

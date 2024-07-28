@@ -6,8 +6,8 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import fun.teamti.goofyenchants.init.ModEnchantment;
 import fun.teamti.goofyenchants.init.ModLootModifier;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
@@ -15,8 +15,6 @@ import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
 import java.util.function.Supplier;
 
 public class RandomnessLootModifier extends LootModifier {
@@ -37,23 +35,22 @@ public class RandomnessLootModifier extends LootModifier {
     public @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
         ItemStack tool = context.getParam(LootContextParams.TOOL);
         int enchantmentLevel = tool.getEnchantmentLevel(ModEnchantment.RANDOMNESS.get());
-
-        if (enchantmentLevel <= 0) {
-            return generatedLoot;
-        }
-
         double dropChance = 0.05 * enchantmentLevel;
-
-        if (context.getRandom().nextDouble() >= dropChance) {
-            return generatedLoot;
+        if (context.getRandom().nextDouble() < dropChance) {
+            return new ObjectArrayList<>(generatedLoot.stream()
+                    .map(stack -> getRandomItem(stack, context.getLevel()))
+                    .toList());
         }
+        return generatedLoot;
+    }
 
-        ObjectArrayList<ItemStack> newLoot = new ObjectArrayList<>();
-        List<Item> items = ForgeRegistries.ITEMS.getValues().stream().toList();
-        Item randomItem = items.get(context.getRandom().nextInt(items.size()));
-        ItemStack randomItemStack = new ItemStack(randomItem);
-
-        newLoot.add(randomItemStack);
-        return newLoot;
+    private static ItemStack getRandomItem(ItemStack stack, Level world) {
+        return new ItemStack(
+                ForgeRegistries.ITEMS.getValues().stream()
+                        .skip(world.getRandom().nextInt(ForgeRegistries.ITEMS.getValues().size()))
+                        .findFirst()
+                        .orElse(stack.getItem()),
+                stack.getCount()
+        );
     }
 }

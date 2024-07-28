@@ -12,7 +12,6 @@ public class ClientEventsSubscriber {
 
     @SubscribeEvent
     public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
-        GoofyEnchants.LOGGER.info("Registering UnoReverseParticle provider");
         ModParticle.handleRegisterParticle(event);
     }
 }

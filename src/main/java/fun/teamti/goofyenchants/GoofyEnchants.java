@@ -30,6 +30,7 @@ public class GoofyEnchants
         ModEnchantment.ENCHANTMENTS.register(modEventBus);
         ModLootModifier.LOOT_MODIFIER_SERIALIZERS.register(modEventBus);
         ModParticle.PARTICLE_TYPES.register(modEventBus);
+
         MinecraftForge.EVENT_BUS.register(this);
     }
 
