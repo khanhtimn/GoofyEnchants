@@ -26,11 +26,9 @@ public class DisloyaltyHandler {
     public static void handleTridentThrow(EntityJoinLevelEvent event) {
         if (event.getEntity() instanceof ThrownTrident trident) {
             CompoundTag tridentNBT = trident.serializeNBT();
-            // Try to access the Trident item data directly
             if (tridentNBT.contains("Trident", CompoundTag.TAG_COMPOUND)) {
                 CompoundTag tridentItemNBT = tridentNBT.getCompound("Trident");
                 if (hasEnchantment(tridentItemNBT, ModEnchantment.DISLOYALTY.getId())) {
-                    //GoofyEnchants.LOGGER.info("Trident has Disloyalty");
                     trident.getPersistentData().putBoolean("hasDisloyalty", true);
                 }
             } else {
@@ -46,24 +44,17 @@ public class DisloyaltyHandler {
 
         ServerLevel serverLevel = (ServerLevel) event.level;
         List<ThrownTrident> allTridents = new ArrayList<>();
-
-        // Get all players in the level
         for (ServerPlayer player : serverLevel.players()) {
-            // Search in a radius around each player
             AABB searchBox = player.getBoundingBox().inflate(SEARCH_RADIUS);
             List<ThrownTrident> nearbyTridents = serverLevel.getEntitiesOfClass(ThrownTrident.class, searchBox);
             allTridents.addAll(nearbyTridents);
         }
 
         List<ThrownTrident> disloyalTridents = allTridents.stream()
-                .filter(trident -> {
-                    //GoofyEnchants.LOGGER.info("Trident at {} has hasDisloyalty: {}", trident.position(), hasFlag);
-                    return trident.getPersistentData().getBoolean("hasDisloyalty");
-                })
+                .filter(trident -> trident.getPersistentData().getBoolean("hasDisloyalty"))
                 .toList();
 
         for (ThrownTrident trident : disloyalTridents) {
-            //GoofyEnchants.LOGGER.info("Processing Disloyal Trident at {}", trident.position());
             CompoundTag nbt = trident.getPersistentData();
             int flyTicks = nbt.getInt("flyTicks");
             flyTicks++;
@@ -80,7 +71,6 @@ public class DisloyaltyHandler {
                     }
 
                     if (trident.position().closerThan(owner.position(), 2.0D)) {
-                        //GoofyEnchants.LOGGER.info("Trident close to owner, applying damage");
                         owner.hurt(trident.damageSources().trident(trident, owner), 8.0F);
                     }
                 }

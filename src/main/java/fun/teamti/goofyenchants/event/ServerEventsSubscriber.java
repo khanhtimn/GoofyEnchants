@@ -4,9 +4,11 @@ import fun.teamti.goofyenchants.GoofyEnchants;
 import fun.teamti.goofyenchants.enchantment.handler.*;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
+import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -20,13 +22,22 @@ public class ServerEventsSubscriber {
 
     @SubscribeEvent
     public static void onLivingHurt(LivingHurtEvent event) {
-        CombustionHandler.handleShootingCombustion(event);
         SwappinessHandler.handleEntitySwapItem(event);
     }
 
     @SubscribeEvent
     public static void onLivingEquipmentChange(LivingEquipmentChangeEvent event) {
         SizeHandler.handleLivingEquipmentChange(event);
+    }
+
+    @SubscribeEvent
+    public static void onArrowLoose(ArrowLooseEvent event) {
+        MultiShotBowHandler.handleMultishotBow(event);
+    }
+
+    @SubscribeEvent
+    public static void onProjectileImpact(ProjectileImpactEvent event) {
+        CombustionHandler.handleShootingCombustion(event);
     }
 
     @SubscribeEvent

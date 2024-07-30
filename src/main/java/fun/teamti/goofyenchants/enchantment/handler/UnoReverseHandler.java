@@ -13,16 +13,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.network.PacketDistributor;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class UnoReverseHandler {
-
-    private static final List<Runnable> SCHEDULED_TASKS = new ArrayList<>();
 
     public static void handleLivingAttack(LivingAttackEvent event) {
         if (!(event.getEntity() instanceof Player player)) {
@@ -44,17 +38,7 @@ public class UnoReverseHandler {
             double chance = enchantmentLevel * 0.1;
             if (GoofyEnchants.rand.nextDouble() < chance) {
                 event.setCanceled(true);
-                SCHEDULED_TASKS.add(() -> reflectDamageAndKnockback(player, (LivingEntity) attacker, event.getAmount()));
-            }
-        }
-    }
-
-    public static void handleServerTick(TickEvent.ServerTickEvent event) {
-        if (event.phase == TickEvent.Phase.END) {
-            List<Runnable> tasks = new ArrayList<>(SCHEDULED_TASKS);
-            SCHEDULED_TASKS.clear();
-            for (Runnable task : tasks) {
-                task.run();
+                reflectDamageAndKnockback(player, (LivingEntity) attacker, event.getAmount());
             }
         }
     }
@@ -69,7 +53,6 @@ public class UnoReverseHandler {
 
         if (attacker instanceof ServerPlayer serverAttacker) {
             ItemStack unoReverseStack = new ItemStack(ModItems.UNO_REVERSE.get());
-
             ModNetwork.INSTANCE.send(PacketDistributor.PLAYER.with(() -> serverAttacker), new UnoReverseAnimationPacket(unoReverseStack));
         }
     }

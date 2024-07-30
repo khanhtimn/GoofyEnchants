@@ -9,10 +9,8 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import virtuoel.pehkui.api.ScaleData;
-import virtuoel.pehkui.api.ScaleModifiers;
 import virtuoel.pehkui.api.ScaleType;
 import virtuoel.pehkui.api.ScaleTypes;
-import virtuoel.pehkui.util.ScaleUtils;
 
 import java.util.Map;
 

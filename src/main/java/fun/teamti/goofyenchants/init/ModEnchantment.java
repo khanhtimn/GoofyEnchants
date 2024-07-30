@@ -2,6 +2,7 @@ package fun.teamti.goofyenchants.init;
 
 import fun.teamti.goofyenchants.GoofyEnchants;
 import fun.teamti.goofyenchants.enchantment.curses.DisloyaltyCurse;
+import fun.teamti.goofyenchants.enchantment.curses.InnerConscienceCurse;
 import fun.teamti.goofyenchants.enchantment.curses.SwappinessCurse;
 import fun.teamti.goofyenchants.enchantment.enchantments.*;
 import fun.teamti.goofyenchants.enchantment.enchantments.RandomnessEnchantment;
@@ -45,4 +46,8 @@ public class ModEnchantment {
     public static final RegistryObject<Enchantment> COMBUSTION = ENCHANTMENTS
             .register("combustion", () -> new CombustionEnchantment(
                     Enchantment.Rarity.VERY_RARE));
+
+    public static final RegistryObject<Enchantment> INNER_CONSCIENCE = ENCHANTMENTS
+            .register("inner_conscience", () -> new InnerConscienceCurse(
+                    Enchantment.Rarity.COMMON));
 }

@@ -3,32 +3,45 @@ package fun.teamti.goofyenchants.enchantment.handler;
 import fun.teamti.goofyenchants.init.ModEnchantment;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.ProjectileImpactEvent;
 
 public class CombustionHandler {
 
-    public static void handleShootingCombustion(LivingHurtEvent event) {
+    public static void handleShootingCombustion(ProjectileImpactEvent event) {
+        Entity projectile = event.getEntity();
+        Level level = projectile.level();
 
-        Entity target = event.getSource().getEntity();
-        Level level = event.getEntity().level();
+        if (!(projectile instanceof AbstractArrow arrow)) {
+            return;
+        }
 
-        ItemStack activeItem = target instanceof LivingEntity livingEntity ? livingEntity.getMainHandItem() : ItemStack.EMPTY;
-        int enchantmentLevel = activeItem.getEnchantmentLevel(ModEnchantment.COMBUSTION.get());
+        Entity shooter = arrow.getOwner();
+        if (!(shooter instanceof LivingEntity livingShooter)) {
+            return;
+        }
 
-        double chance = 0.25 * enchantmentLevel;
+        ItemStack bow = livingShooter.getMainHandItem();
+        int enchantmentLevel = bow.getEnchantmentLevel(ModEnchantment.COMBUSTION.get());
 
         if (enchantmentLevel <= 0) {
             return;
         }
 
-        if (!level.isClientSide()) {
-            if (level.random.nextDouble() < chance) {
-                level.explode(null, event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), 3, Level.ExplosionInteraction.NONE);
-            }
-        }
+        double chance = 0.06 * enchantmentLevel;
+        int explodeRadius = switch (enchantmentLevel) {
+            case 1 -> 3 + level.random.nextInt(2);
+            case 2 -> 4 + level.random.nextInt(2);
+            case 3 -> 5 + level.random.nextInt(2);
+            default -> 0;
+        };
 
+        if (!level.isClientSide() && level.random.nextDouble() < chance) {
+            level.explode(null, projectile.getX(), projectile.getY(), projectile.getZ(), explodeRadius, Level.ExplosionInteraction.NONE);
+            event.setImpactResult(ProjectileImpactEvent.ImpactResult.DEFAULT);
+        }
     }
 }
 

@@ -15,7 +15,7 @@ public class CombustionEnchantment extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 5;
+        return 3;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class CombustionEnchantment extends Enchantment {
 
     @Override
     public int getMaxCost(int pEnchantmentLevel) {
-        return this.getMinCost(pEnchantmentLevel) + 15;
+        return this.getMinCost(pEnchantmentLevel) + 20;
     }
 
     @Override
