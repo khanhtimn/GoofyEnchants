@@ -30,11 +30,6 @@ public class ServerEventsSubscriber {
     }
 
     @SubscribeEvent
-    public static void onServerTick(TickEvent.ServerTickEvent event) {
-        UnoReverseHandler.handleServerTick(event);
-    }
-
-    @SubscribeEvent
     public static void onLevelTick(TickEvent.LevelTickEvent event) {
         DisloyaltyHandler.handleTridentTick(event);
     }
