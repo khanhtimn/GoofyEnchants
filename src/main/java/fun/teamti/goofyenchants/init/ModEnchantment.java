@@ -45,5 +45,4 @@ public class ModEnchantment {
     public static final RegistryObject<Enchantment> COMBUSTION = ENCHANTMENTS
             .register("combustion", () -> new CombustionEnchantment(
                     Enchantment.Rarity.VERY_RARE));
-
 }

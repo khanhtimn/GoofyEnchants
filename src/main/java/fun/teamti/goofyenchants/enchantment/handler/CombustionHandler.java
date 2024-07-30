@@ -17,7 +17,7 @@ public class CombustionHandler {
         ItemStack activeItem = target instanceof LivingEntity livingEntity ? livingEntity.getMainHandItem() : ItemStack.EMPTY;
         int enchantmentLevel = activeItem.getEnchantmentLevel(ModEnchantment.COMBUSTION.get());
 
-        double chance = 0.05 * enchantmentLevel;
+        double chance = 0.25 * enchantmentLevel;
 
         if (enchantmentLevel <= 0) {
             return;
