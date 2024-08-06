@@ -1,12 +1,16 @@
 {
   "textures": [
-    "goofyenchants:uno_reverse_particle",
-    "goofyenchants:uno_reverse_particle",
-    "goofyenchants:uno_reverse_particle",
-    "goofyenchants:uno_reverse_particle",
-    "goofyenchants:uno_reverse_particle",
-    "goofyenchants:uno_reverse_particle",
-    "goofyenchants:uno_reverse_particle",
-    "goofyenchants:uno_reverse_particle"
+    "goofyenchants:uno_reverse_particle_1",
+    "goofyenchants:uno_reverse_particle_2",
+    "goofyenchants:uno_reverse_particle_3",
+    "goofyenchants:uno_reverse_particle_4",
+    "goofyenchants:uno_reverse_particle_1",
+    "goofyenchants:uno_reverse_particle_2",
+    "goofyenchants:uno_reverse_particle_3",
+    "goofyenchants:uno_reverse_particle_4",
+    "goofyenchants:uno_reverse_particle_1",
+    "goofyenchants:uno_reverse_particle_2",
+    "goofyenchants:uno_reverse_particle_3",
+    "goofyenchants:uno_reverse_particle_4"
   ]
 }

@@ -19,11 +19,6 @@ public class UnoReverseParticle extends SimpleAnimatedParticle {
         this.quadSize *= 0.75F;
         this.lifetime = 60 + this.random.nextInt(12);
         this.setSpriteFromAge(pSprites);
-        if (this.random.nextInt(4) == 0) {
-            this.setColor(0.6F + this.random.nextFloat() * 0.2F, 0.6F + this.random.nextFloat() * 0.3F, this.random.nextFloat() * 0.2F);
-        } else {
-            this.setColor(0.1F + this.random.nextFloat() * 0.2F, 0.4F + this.random.nextFloat() * 0.3F, this.random.nextFloat() * 0.2F);
-        }
     }
 
     @OnlyIn(Dist.CLIENT)
