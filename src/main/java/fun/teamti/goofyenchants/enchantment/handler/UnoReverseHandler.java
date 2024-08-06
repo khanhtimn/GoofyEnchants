@@ -1,6 +1,5 @@
 package fun.teamti.goofyenchants.enchantment.handler;
 
-import fun.teamti.goofyenchants.GoofyEnchants;
 import fun.teamti.goofyenchants.init.ModEnchantment;
 import fun.teamti.goofyenchants.init.ModItems;
 import fun.teamti.goofyenchants.init.ModNetwork;
@@ -29,7 +28,7 @@ public class UnoReverseHandler {
         }
         if (activeItem.getItem() instanceof ShieldItem && event.getEntity().isBlocking()) {
             double chance = enchantmentLevel * 0.1;
-            if (GoofyEnchants.rand.nextDouble() < chance) {
+            if (attacker.getRandom().nextDouble() < chance) {
                 event.setCanceled(true);
                 reflectDamageAndKnockback(event.getEntity(), attacker, event.getAmount());
             }

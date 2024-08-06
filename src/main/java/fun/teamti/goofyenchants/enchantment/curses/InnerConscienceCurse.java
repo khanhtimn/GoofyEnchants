@@ -6,7 +6,7 @@ import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
 public class InnerConscienceCurse extends Enchantment {
     public InnerConscienceCurse(Rarity rarity, EquipmentSlot... equipmentSlots) {
-        super(rarity, EnchantmentCategory.ARMOR, equipmentSlots);
+        super(rarity, EnchantmentCategory.ARMOR_HEAD, equipmentSlots);
     }
 
     @Override

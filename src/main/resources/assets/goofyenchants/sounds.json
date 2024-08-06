@@ -1,8 +1,26 @@
 {
   "uno_reverse": {
     "subtitle": "sounds.goofyenchants.uno_reverse_use",
-    "sounds" : [
+    "sounds": [
       "goofyenchants:uno_reverse"
+    ]
+  },
+  "huy_ngoc_do": {
+    "subtitle": "sounds.goofyenchants.huy_ngoc_do_singing",
+    "sounds": [
+      "goofyenchants:huy_ngoc_do"
+    ]
+  },
+  "yeat_being_real": {
+    "subtitle": "sounds.goofyenchants.yeat_being_real",
+    "sounds": [
+      "goofyenchants:yeat_being_real"
+    ]
+  },
+  "soi_ech_everynight": {
+    "subtitle": "sounds.goofyenchants.soi_ech_everynight",
+    "sounds": [
+      "goofyenchants:soi_ech_everynight"
     ]
   }
 }

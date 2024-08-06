@@ -27,8 +27,7 @@ public class SizeHandler {
 
 
     public static void handleLivingEquipmentChange(LivingEquipmentChangeEvent event) {
-        LivingEntity entity = event.getEntity();
-        updateEntityScale(entity);
+        updateEntityScale(event.getEntity());
     }
 
     private static void updateEntityScale(LivingEntity entity) {

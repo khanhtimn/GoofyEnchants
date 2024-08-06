@@ -1,19 +1,23 @@
 package fun.teamti.goofyenchants.event;
 
 import fun.teamti.goofyenchants.GoofyEnchants;
+import fun.teamti.goofyenchants.enchantment.enchantments.InnerConscienceHandler;
 import fun.teamti.goofyenchants.enchantment.handler.*;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = GoofyEnchants.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ServerEventsSubscriber {
+
+    @SubscribeEvent
+    public static void onPlayerTickEvent(TickEvent.PlayerTickEvent event) {
+        InnerConscienceHandler.handleSoundPlay(event);
+    }
 
     @SubscribeEvent
     public static void onLivingAttack(LivingAttackEvent event) {

@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.network.NetworkEvent;
 
@@ -35,6 +36,7 @@ public class UnoReverseAnimationPacket {
         context.setPacketHandled(true);
     }
 
+    @OnlyIn(Dist.CLIENT)
     private void handleUnoReverseAnimationClientSide() {
         Minecraft mc = Minecraft.getInstance();
         assert mc.player != null;
