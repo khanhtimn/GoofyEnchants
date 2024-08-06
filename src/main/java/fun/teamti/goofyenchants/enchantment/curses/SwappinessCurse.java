@@ -14,4 +14,8 @@ public class SwappinessCurse extends Enchantment {
         return true;
     }
 
+    @Override
+    public int getMaxLevel() {
+        return 3;
+    }
 }

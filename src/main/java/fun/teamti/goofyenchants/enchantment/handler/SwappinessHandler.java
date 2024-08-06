@@ -2,7 +2,6 @@ package fun.teamti.goofyenchants.enchantment.handler;
 
 import fun.teamti.goofyenchants.GoofyEnchants;
 import fun.teamti.goofyenchants.init.ModEnchantment;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
@@ -11,23 +10,20 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 public class SwappinessHandler {
 
-    private static final double SWAP_CHANCE = 0.2;
-
     public static void handleEntitySwapItem(LivingHurtEvent event) {
-        Entity source = event.getSource().getEntity();
-        Entity target = event.getEntity();
+        if (!(event.getSource().getEntity() instanceof LivingEntity attacker)) {
+            return;
+        }
+        ItemStack attackerItem = attacker.getMainHandItem();
+        int enchantmentLevel = attackerItem.getEnchantmentLevel(ModEnchantment.SWAPPINESS.get());
 
-        if (source instanceof LivingEntity attacker && target instanceof LivingEntity defender) {
-            ItemStack attackerItem = attacker.getMainHandItem();
-            int enchantmentLevel = attackerItem.getEnchantmentLevel(ModEnchantment.SWAPPINESS.get());
+        if (enchantmentLevel <= 0) {
+            return;
+        }
+        double chance = enchantmentLevel * 0.1;
 
-            if (enchantmentLevel <= 0) {
-                return;
-            }
-
-            if (GoofyEnchants.rand.nextDouble() < SWAP_CHANCE) {
-                swapItem(attacker, defender, attackerItem);
-            }
+        if (GoofyEnchants.rand.nextDouble() < chance) {
+            swapItem(attacker, event.getEntity(), attackerItem);
         }
     }
 

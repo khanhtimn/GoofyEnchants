@@ -7,9 +7,7 @@ import fun.teamti.goofyenchants.init.ModNetwork;
 import fun.teamti.goofyenchants.network.packet.UnoReverseAnimationPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSources;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.phys.Vec3;
@@ -19,36 +17,31 @@ import net.minecraftforge.network.PacketDistributor;
 public class UnoReverseHandler {
 
     public static void handleLivingAttack(LivingAttackEvent event) {
-        if (!(event.getEntity() instanceof Player player)) {
+
+        if (!(event.getSource().getEntity() instanceof LivingEntity attacker)) {
             return;
         }
 
-        Entity attacker = event.getSource().getEntity();
-
-        if (!(attacker instanceof LivingEntity)) {
-            return;
-        }
-
-        ItemStack activeItem = player.getUseItem();
+        ItemStack activeItem = event.getEntity().getUseItem();
         int enchantmentLevel = activeItem.getEnchantmentLevel(ModEnchantment.UNO_REVERSE.get());
         if (enchantmentLevel <= 0) {
             return;
         }
-        if (activeItem.getItem() instanceof ShieldItem && player.isBlocking()) {
+        if (activeItem.getItem() instanceof ShieldItem && event.getEntity().isBlocking()) {
             double chance = enchantmentLevel * 0.1;
             if (GoofyEnchants.rand.nextDouble() < chance) {
                 event.setCanceled(true);
-                reflectDamageAndKnockback(player, (LivingEntity) attacker, event.getAmount());
+                reflectDamageAndKnockback(event.getEntity(), attacker, event.getAmount());
             }
         }
     }
 
-    private static void reflectDamageAndKnockback(Player player, LivingEntity attacker, float damage) {
-        DamageSources damageSources = player.level().damageSources();
-        attacker.hurt(damageSources.playerAttack(player), damage);
+    private static void reflectDamageAndKnockback(LivingEntity defender, LivingEntity attacker, float damage) {
+        DamageSources damageSources = defender.level().damageSources();
+        attacker.hurt(damageSources.generic(), damage);
 
         double knockbackStrength = 0.5;
-        Vec3 knockbackVector = attacker.position().subtract(player.position()).normalize().scale(knockbackStrength);
+        Vec3 knockbackVector = attacker.position().subtract(defender.position()).normalize().scale(knockbackStrength);
         attacker.push(knockbackVector.x, 0.1, knockbackVector.z);
 
         if (attacker instanceof ServerPlayer serverAttacker) {
