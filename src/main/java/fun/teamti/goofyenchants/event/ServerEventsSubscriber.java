@@ -20,6 +20,11 @@ public class ServerEventsSubscriber {
     }
 
     @SubscribeEvent
+    public static void onLivingDeath(LivingDeathEvent event) {
+        InnerConscienceHandler.handleDeathStopPlay(event);
+    }
+
+    @SubscribeEvent
     public static void onLivingAttack(LivingAttackEvent event) {
         UnoReverseHandler.handleLivingAttack(event);
     }
