@@ -18,5 +18,10 @@ public class ModSound {
 
     public static final RegistryObject<SoundEvent> UNO_REVERSE = registerSoundEvent("uno_reverse");
 
+    public static final RegistryObject<SoundEvent> HUY_NGOC_DO = registerSoundEvent("huy_ngoc_do");
 
+    public static final RegistryObject<SoundEvent> YEAT_BEING_REAL = registerSoundEvent("yeat_being_real");
+
+    public static final RegistryObject<SoundEvent> SOI_ECH_EVERYNIGHT = registerSoundEvent("soi_ech_everynight");
 }
+

@@ -160,7 +160,7 @@ dependencies {
     //Xenon
     runtimeOnly fg.deobf("curse.maven:Xenon-564239:5374393")
     //Oculus
-    runtimeOnly fg.deobf("curse.maven:Oculus-581495:5299671")
+    //runtimeOnly fg.deobf("curse.maven:Oculus-581495:5299671")
     //Ferritecore
     runtimeOnly fg.deobf("curse.maven:FerriteCore-429235:4810975")
     //ImmediatelyFast

@@ -1,6 +1,5 @@
 package fun.teamti.goofyenchants.enchantment.handler;
 
-import fun.teamti.goofyenchants.GoofyEnchants;
 import fun.teamti.goofyenchants.init.ModEnchantment;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -22,7 +21,7 @@ public class SwappinessHandler {
         }
         double chance = enchantmentLevel * 0.1;
 
-        if (GoofyEnchants.rand.nextDouble() < chance) {
+        if (event.getEntity().getRandom().nextDouble() < chance) {
             swapItem(attacker, event.getEntity(), attackerItem);
         }
     }

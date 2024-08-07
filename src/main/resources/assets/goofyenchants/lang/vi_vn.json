@@ -9,6 +9,7 @@
   "enchantment.goofyenchants.randomness": "Phế vật thành báu vật",
   "enchantment.goofyenchants.smelting_touch": "Tái hiện thánh quang",
   "enchantment.goofyenchants.combustion": "Bật nảy may mắn",
+  "enchantment.goofyenchants.inner_conscience": "420ent",
   "enchantment.goofyenchants.uno_reverse.desc": "Phản sát thương khi chặn bằng khiên",
   "enchantment.goofyenchants.big.desc": "Hoá to khi mặc mũ có cường hoá này",
   "enchantment.goofyenchants.small.desc": "Hoá nhỏ khi mặc mũ có cường hoá này",
@@ -16,5 +17,9 @@
   "enchantment.goofyenchants.swappiness.desc": "Ngẫu nhiên đổi vật phẩm với kẻ địch khi tấn công",
   "enchantment.goofyenchants.randomness.desc": "Tỉ lệ rớt vật phẩm ngẫu nhiên mỗi khi đập khối",
   "enchantment.goofyenchants.smelting_touch.desc": "Tự động nung khối đã đào",
-  "enchantment.goofyenchants.combustion.desc": "Mũi tên có tỉ lệ phát nổ khi trúng mục tiêu"
+  "enchantment.goofyenchants.combustion.desc": "Mũi tên có tỉ lệ phát nổ khi trúng mục tiêu",
+  "sounds.goofyenchants.uno_reverse_use": "Ai đó bị UNO© Reverse",
+  "sounds.goofyenchants.huy_ngoc_do_singing": "Huỹ Ngọc Đô đang hát",
+  "sounds.goofyenchants.yeat_being_real": "If We Being Rëal",
+  "sounds.goofyenchants.soi_ech_everynight": "Soi ếch e rì nai ai ài ồ ái ai ài"
 }

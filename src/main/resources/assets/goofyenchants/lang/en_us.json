@@ -9,6 +9,7 @@
   "enchantment.goofyenchants.randomness": "Trash to Treasure",
   "enchantment.goofyenchants.smelting_touch": "Radiant Refactor",
   "enchantment.goofyenchants.combustion": "Lucky Ricochet",
+  "enchantment.goofyenchants.inner_conscience": "Inner Conscience",
   "enchantment.goofyenchants.uno_reverse.desc": "Reflects damage when blocking with a shield",
   "enchantment.goofyenchants.big.desc": "Turns into a giant when wearing a helmet with this enchantment",
   "enchantment.goofyenchants.small.desc": "Turns into an ant when wearing a helmet with this enchantment",
@@ -16,5 +17,9 @@
   "enchantment.goofyenchants.swappiness.desc": "Chance to swap item with enemies when attacking",
   "enchantment.goofyenchants.randomness.desc": "Chance to drop random items when breaking a block",
   "enchantment.goofyenchants.smelting_touch.desc": "Automatically smelts mined blocks",
-  "enchantment.goofyenchants.combustion.desc": "Arrows have a chance of exploding when hitting an enemy"
+  "enchantment.goofyenchants.combustion.desc": "Arrows have a chance of exploding when hitting an enemy",
+  "sounds.goofyenchants.uno_reverse_use": "UNO© Reversed",
+  "sounds.goofyenchants.huy_ngoc_do_singing": "Huy Ngoc Do Singing",
+  "sounds.goofyenchants.yeat_being_real": "If We Being Rëal",
+  "sounds.goofyenchants.soi_ech_everynight": "Soi ếch e rì nai ai ài ồ ái ai ài"
 }
