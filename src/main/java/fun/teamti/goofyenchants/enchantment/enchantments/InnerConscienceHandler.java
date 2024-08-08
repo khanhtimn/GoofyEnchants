@@ -21,8 +21,17 @@ public class InnerConscienceHandler {
 
     public static final List<SoundEvent> CONSCIENCE_SOUND_EVENTS = List.of(
             ModSound.HUY_NGOC_DO.get(),
-            ModSound.YEAT_BEING_REAL.get(),
-            ModSound.SOI_ECH_EVERYNIGHT.get()
+            ModSound.SOI_ECH_EVERYNIGHT.get(),
+            ModSound.FREE_FIRE.get(),
+            ModSound.HET_SUONG_CAN_GIO.get(),
+            ModSound.HET_XANG_CAN_SO.get(),
+            ModSound.AI_CUNG_DU_THUA.get(),
+            ModSound.VINFLOW.get(),
+            ModSound.DANG_LONG_BIEN.get(),
+            ModSound.QUAN_AO_2HAND.get(),
+            ModSound.VIT_QUAY_LANG_SON.get(),
+            ModSound.TSMT.get(),
+            ModSound.PHO_TAI.get()
     );
 
     public static final WeakHashMap<SoundEvent, SimpleSoundInstance> CONSCIENCE_SOUND_TRACKER = new WeakHashMap<>();
@@ -33,7 +42,7 @@ public class InnerConscienceHandler {
             return;
         }
 
-        if (event.player.tickCount % 20 == 0) {
+        if (event.player.tickCount % 200 == 0) {
             if (event.player.getRandom().nextFloat() < 0.25) {
                 if (event.player instanceof ServerPlayer player) {
                     ModNetwork.INSTANCE.send(

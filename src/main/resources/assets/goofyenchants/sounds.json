@@ -11,16 +11,70 @@
       "goofyenchants:huy_ngoc_do"
     ]
   },
-  "yeat_being_real": {
-    "subtitle": "sounds.goofyenchants.yeat_being_real",
-    "sounds": [
-      "goofyenchants:yeat_being_real"
-    ]
-  },
   "soi_ech_everynight": {
     "subtitle": "sounds.goofyenchants.soi_ech_everynight",
     "sounds": [
       "goofyenchants:soi_ech_everynight"
+    ]
+  },
+  "free_fire": {
+    "subtitle": "sounds.goofyenchants.free_fire",
+    "sounds": [
+      "goofyenchants:free_fire"
+    ]
+  },
+  "het_suong_can_gio": {
+    "subtitle": "sounds.goofyenchants.het_suong_can_gio",
+    "sounds": [
+      "goofyenchants:het_suong_can_gio"
+    ]
+  },
+  "het_xang_can_so": {
+    "subtitle": "sounds.goofyenchants.het_xang_can_so",
+    "sounds": [
+      "goofyenchants:het_xang_can_so"
+    ]
+  },
+  "ai_cung_du_thua": {
+    "subtitle": "sounds.goofyenchants.ai_cung_du_thua",
+    "sounds": [
+      "goofyenchants:ai_cung_du_thua"
+    ]
+  },
+  "vinflow": {
+    "subtitle": "sounds.goofyenchants.vinflow",
+    "sounds": [
+      "goofyenchants:vinflow"
+    ]
+  },
+  "dang_long_bien": {
+    "subtitle": "sounds.goofyenchants.dang_long_bien",
+    "sounds": [
+      "goofyenchants:dang_long_bien"
+    ]
+  },
+  "quan_ao_2hand": {
+    "subtitle": "sounds.goofyenchants.quan_ao_2hand",
+    "sounds": [
+      "goofyenchants:quan_ao_2hand"
+    ]
+  },
+  "vit_quay_lang_song": {
+    "subtitle": "sounds.goofyenchants.vit_quay_lang_song",
+    "sounds": [
+      "goofyenchants:vit_quay_lang_song"
+    ]
+  },
+  "tsmt": {
+    "subtitle": "sounds.goofyenchants.tsmt",
+    "sounds": [
+      "goofyenchants:tsmt"
+    ]
+  },
+  "pho_tai": {
+    "subtitle": "sounds.goofyenchants.pho_tai",
+    "sounds": [
+      "goofyenchants:pho_tai"
     ]
   }
 }
